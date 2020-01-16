@@ -1,0 +1,248 @@
+In AsyncHandler.java
+in calculatePrice()
+String destprice = "SELECT baseprice FROM Locations_country WHERE place='" + dest + "'";
+String hotelprice = "SELECT price FROM Hotels WHERE hotelname='" + hotel + "'";
+String airlineprice = "SELECT price FROM Airlines WHERE airlinename='" + airline + "'";
+
+
+In CartServlet.java
+in processRequest()
+Query query1 = em.createNativeQuery("SELECT * FROM APP.CART");
+Query query2 = em.createNativeQuery("INSERT INTO Cart VALUES(" + (++cartid) + ",'" + userid + "','" + dest + "','" + hotel + "'," + days + ",'" + airline + "'," + packagePrice + ")");
+
+In DBListTagHandler.java
+in doTag()
+Query query1 = em.createNativeQuery("SELECT " + colname +" FROM " + tablename);
+
+
+In RegistrationAction.java
+in execute()
+Query query = em.createNativeQuery("SELECT UserName FROM Registration WHERE UserID = '" + uId + "'");
+
+In ValidateAction.java
+in validateUser()
+Query queryCredentials = em.createNativeQuery("SELECT UserID FROM Registration where UserID='" + uID + "' and password='" + Pwd + "' AND Groupname='" + group + "'");
+
+
+
+********************************************************************************************************************************************************************************************
+Table Details:
+
+total tables = 5
+1. Airlines(AirlineName, Price)
+2. Cart(CartID, UserID, Destination, Hotel, Days, Airline, Price)
+3. Hotels(HotelName, Price)
+4. Location_Country(Place, BasePrice)
+5. Registration(userName, userID, Password, Address, State, Country, GroupName)
+
+****************AIRLINES************
+AIRLINENAME:
+	Type:                VarChar
+	DB Data Type:        Varchar
+	Column Size:         50
+	Decimal Digits:      0
+	Part of Primary Key: true
+	Part of index:       true
+	Position:            1
+
+PRICE:
+	Type:                Double
+	DB Data Type:        Double
+	Column Size:         52
+	Decimal Digits:      0
+	Part of Primary Key: false
+	Part of index:       false
+	Position:            2
+
+
+****************CART***************
+CARTID:
+	Type:                Numeric
+	DB Data Type:        Numeric
+	Column Size:         5
+	Decimal Digits:      0
+	Part of Primary Key: true
+	Part of index:       true
+	Position:            1
+
+USERID:
+	Type:                Varchar
+	DB Data Type:        Varchar
+	Column Size:         10
+	Decimal Digits:      0
+	Part of Primary Key: false
+	Part of index:       false
+	Position:            2
+
+DESTINATION:
+	Type:                Varchar
+	DB Data Type:        Varchar
+	Column Size:         20
+	Decimal Digits:      0
+	Part of Primary Key: false
+	Part of index:       false
+	Position:            3
+
+HOTEL:
+	Type:                Varchar
+	DB Data Type:        Varchar
+	Column Size:         20
+	Decimal Digits:      0
+	Part of Primary Key: false
+	Part of index:       false
+	Position:            4
+
+DAYS:
+	Type:                Numeric
+	DB Data Type:        Numeric
+	Column Size:         5
+	Decimal Digits:      0
+	Part of Primary Key: false
+	Part of index:       false
+	Position:            5
+
+AIRLINE:
+	Type:                Varchar
+	DB Data Type:        Varchar
+	Column Size:         20
+	Decimal Digits:      0
+	Part of Primary Key: false
+	Part of index:       false
+	Position:            6
+
+PRICE:
+	Type:                Double
+	DB Data Type:        Double
+	Column Size:         52
+	Decimal Digits:      0
+	Part of Primary Key: false
+	Part of index:       false
+	Position:            7
+
+
+****************HOTELS*************
+HOTELNAME:
+	Type:                VarChar
+	DB Data Type:        Varchar
+	Column Size:         50
+	Decimal Digits:      0
+	Part of Primary Key: true
+	Part of index:       true
+	Position:            1
+
+PRICE:
+	Type:                Double
+	DB Data Type:        Double
+	Column Size:         52
+	Decimal Digits:      0
+	Part of Primary Key: false
+	Part of index:       false
+	Position:            2
+
+
+**********LOCATIONS_COUNTRY*********
+PLACE:
+	Type:                VarChar
+	DB Data Type:        Varchar
+	Column Size:         20
+	Decimal Digits:      0
+	Part of Primary Key: true
+	Part of index:       true
+	Position:            1
+
+BASEPRICE:
+	Type:                Double
+	DB Data Type:        Double
+	Column Size:         52
+	Decimal Digits:      0
+	Part of Primary Key: false
+	Part of index:       false
+	Position:            2
+
+
+***********REGISTRATION************
+USERNAME:
+	Type:                VarChar
+	DB Data Type:        Varchar
+	Column Size:         25
+	Decimal Digits:      0
+	Part of Primary Key: true
+	Part of index:       true
+	Position:            1
+
+USERID:
+	Type:                Varchar
+	DB Data Type:        Varchar
+	Column Size:         25
+	Decimal Digits:      0
+	Part of Primary Key: false
+	Part of index:       false
+	Position:            2
+
+PASSWORD:
+	Type:                Varchar
+	DB Data Type:        Varchar
+	Column Size:         50
+	Decimal Digits:      0
+	Part of Primary Key: false
+	Part of index:       false
+	Position:            3
+
+ADDRESS:
+	Type:                Varchar
+	DB Data Type:        Varchar
+	Column Size:         150
+	Decimal Digits:      0
+	Part of Primary Key: false
+	Part of index:       false
+	Position:            4
+
+STATE:
+	Type:                Varchar
+	DB Data Type:        Varchar
+	Column Size:         25
+	Decimal Digits:      0
+	Part of Primary Key: false
+	Part of index:       false
+	Position:            5
+
+COUNTRY:
+	Type:                Varchar
+	DB Data Type:        Varchar
+	Column Size:         25
+	Decimal Digits:      0
+	Part of Primary Key: false
+	Part of index:       false
+	Position:            6
+
+GROUPNAME:
+	Type:                Varchar
+	DB Data Type:        Varchar
+	Column Size:         25
+	Decimal Digits:      0
+	Part of Primary Key: false
+	Part of index:       false
+	Position:            7
+***********************************insert into APP.LOCATIONs_COUNTRY values('India',200000)
+
+insert into APP.LOCATIONs_COUNTRY values('Australia',190000)
+
+
+insert into APP.LOCATIONs_COUNTRY values('USA',290000)
+
+insert into APP.HOTELS values('Exotica Travels',2500)
+
+insert into APP.HOTELS values('Hotel See View',2700)
+
+insert into APP.HOTELS values('Hotel Patliputra',2800)
+
+insert into  APP.AIRLINES values('British Airways',5000);
+
+insert into  APP.AIRLINES values('Jet Airways',5100);
+
+insert into  APP.AIRLINES values('Indian AirLines',5100);
+
+
+
+
+
